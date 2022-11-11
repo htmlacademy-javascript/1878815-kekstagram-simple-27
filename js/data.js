@@ -1,5 +1,6 @@
 import './util.js';
 import {getRandomPositiveInteger} from './util.js';
+import {getRandomArrayElement} from './util.js';
 
 const DESCRIPTIONS = [
   'Искупалось солнце',
@@ -31,8 +32,6 @@ const comments = {
 
 const CAPTION_COUNT = 25;
 
-const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
-
 const createCaption = (i) => {
   const id = i + 1;
 
@@ -49,4 +48,4 @@ function getCaptions () {
   return Array.from({length: CAPTION_COUNT}, (_, i) => createCaption(i));
 }
 
-getCaptions ();
+export { getCaptions };

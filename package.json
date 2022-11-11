@@ -1,6 +1,7 @@
 {
   "name": "kekstagram-simple",
   "version": "27.0.0",
+  "type": "module",
   "private": true,
   "description": "Личный проект «Кекстаграм (простой)» от HTML Academy",
   "repository": {
@@ -25,4 +26,5 @@
     "node": "16.x",
     "npm": "8.x"
   }
+
 }

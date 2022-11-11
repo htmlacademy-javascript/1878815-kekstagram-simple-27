@@ -12,3 +12,10 @@ function checkStringLength (string, length) {
   return string.length <= length;
 }
 
+const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
+
+export {
+  getRandomPositiveInteger,
+  checkStringLength,
+  getRandomArrayElement
+};
