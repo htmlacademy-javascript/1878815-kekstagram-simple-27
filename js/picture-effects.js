@@ -1,7 +1,7 @@
 const pictureEffects = document.querySelector('.effects__list');
-const pictirePreview = document.querySelector('.img-upload__preview');
+const picturePreview = document.querySelector('.img-upload__preview');
 
-const effectList = [
+const effectsList = [
   {
     id: 'effect-chrome',
     class: 'effects__preview--chrome'
@@ -28,14 +28,14 @@ const effectList = [
   }
 ];
 
-pictureEffects.addEventListener('change', (evt) => {
-  effectList.forEach((effect) => {
+pictureEffects.addEventListener('input', (evt) => {
+  effectsList.forEach((effect) => {
     if (evt.target.id === 'effect-none') {
-      pictirePreview.classList.remove(effect.class);
+      picturePreview.classList.remove(effect.class);
     }
     if (effect.id === evt.target.id) {
-      pictirePreview.className = 'img-upload__preview';
-      pictirePreview.classList.add(effect.class);
+      picturePreview.className = 'img-upload__preview';
+      picturePreview.classList.add(effect.class);
     }
   });
 }

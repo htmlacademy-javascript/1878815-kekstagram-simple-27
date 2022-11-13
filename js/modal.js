@@ -18,7 +18,8 @@ const onPopupEscKeydown = document.addEventListener('keydown', (evt) => {
 function closeFormModal () {
   formModal.classList.add('hidden');
   body.classList.remove('modal-open');
-  //clearSimilarList();
+  document.querySelector('#upload-select-image').reset();
+  document.querySelector('.img-upload__preview').classList = 'img-upload__preview';
 
   document.removeEventListener('keydown', onPopupEscKeydown);
 }
