@@ -1,6 +1,5 @@
-import './pictures.js';
-import {createPictures} from './pictures.js';
-import {similarListFragment} from './pictures.js';
-
-createPictures();
-similarListFragment();
+import './gallery.js';
+import './picture-effects.js';
+import './modal.js';
+import {closeFormModal} from './modal.js';
+closeFormModal();
