@@ -1,8 +1,5 @@
-/*import './util.js';
-import './modal.js';
-import {uploadForm} from './modal.js';
-//import {comment} from './modal.js';
-//import {checkStringLength} from './util.js';
+import './variables.js';
+import {uploadForm} from './variables.js';
 
 const pristine = new Pristine (uploadForm, {
   classTo: 'img-upload__text',
@@ -11,9 +8,11 @@ const pristine = new Pristine (uploadForm, {
 });
 
 uploadForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
 
-//  const isValid = pristine.validate();
+  const isValid = pristine.validate();
+  if (!isValid) {
+    evt.preventDefault();
+  }
 });
 
 export {
