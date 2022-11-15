@@ -1,6 +1,5 @@
 import './data.js';
 import {getCaptions} from './data.js';
-getCaptions();
 
 const pictures = document.querySelector('.pictures');
 const pictureTemplete = document.querySelector('#picture').content.querySelector('.picture');

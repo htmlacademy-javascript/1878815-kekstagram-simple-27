@@ -1,5 +1,8 @@
-const pictureEffects = document.querySelector('.effects__list');
-const picturePreview = document.querySelector('.img-upload__preview');
+import './variables.js';
+import {
+  picturePreview,
+  pictureEffects
+} from './variables.js';
 
 const effectsList = [
   {

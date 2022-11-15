@@ -1,7 +1,15 @@
-const pictureField = document.querySelector('#upload-file');
-const formModal = document.querySelector('.img-upload__overlay');
-const body = document.querySelector('body');
-const closeElement = formModal.querySelector('.img-upload__cancel');
+import './variables.js';
+import './scale.js';
+import {
+  picturePreview,
+  scaleContol,
+  pictureField,
+  body,
+  formModal,
+  comment,
+  closeElement,
+  ceilScale
+} from './variables.js';
 
 pictureField.onchange = () => {
   body.classList.add('modal-open');
@@ -15,11 +23,18 @@ const onPopupEscKeydown = document.addEventListener('keydown', (evt) => {
   }
 });
 
+const clearForm = () => {
+  pictureField.value = '';
+  picturePreview.classList = 'img-upload__preview';
+  comment.value = '';
+  scaleContol.value = `${ceilScale}%`;
+  picturePreview.style.transform = `scale(${ceilScale / 100})`;
+};
+
 function closeFormModal () {
   formModal.classList.add('hidden');
   body.classList.remove('modal-open');
-  document.querySelector('#upload-select-image').reset();
-  document.querySelector('.img-upload__preview').classList = 'img-upload__preview';
+  clearForm();
 
   document.removeEventListener('keydown', onPopupEscKeydown);
 }
@@ -29,7 +44,6 @@ closeElement.addEventListener('click', () => {
 });
 
 export {
-  pictureField,
-  onPopupEscKeydown,
-  closeFormModal
+  closeFormModal,
+  clearForm
 };

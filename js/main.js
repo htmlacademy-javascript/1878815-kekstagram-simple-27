@@ -1,5 +1,5 @@
 import './gallery.js';
 import './picture-effects.js';
+import './scale.js';
 import './modal.js';
-import {closeFormModal} from './modal.js';
-closeFormModal();
+//import './form-validation.js';
