@@ -7,6 +7,16 @@ const pristine = new Pristine (uploadForm, {
   errorTextClass: 'img-upload__text--error'
 });
 
+function validateComment (value) {
+  return value.length >= 20 && value.length <= 140;
+}
+
+pristine.addValidator(
+  uploadForm.querySelector('.text__description'),
+  validateComment,
+  'От 20 до 140 символов'
+);
+
 uploadForm.addEventListener('submit', (evt) => {
 
   const isValid = pristine.validate();
@@ -14,7 +24,3 @@ uploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
   }
 });
-
-export {
-  pristine
-};
