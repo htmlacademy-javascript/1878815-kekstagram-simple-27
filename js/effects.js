@@ -104,6 +104,9 @@ sliderElement.noUiSlider.on('update', () => {
 
 const onEffectChange = (evt) => {
   currentEffect = EFFECTS_LIST.find((effect) => effect.id === evt.target.id);
+  if (evt.target.id === 'effect-none') {
+    picturePreview.style.filter = 'none';
+  }
   updateSlider();
 };
 
