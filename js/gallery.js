@@ -1,14 +1,13 @@
 import './data.js';
 import {getCaptions} from './data.js';
-getCaptions();
 
 const pictures = document.querySelector('.pictures');
 const pictureTemplete = document.querySelector('#picture').content.querySelector('.picture');
 
-const createPictures = getCaptions();
+const gallery = getCaptions();
 const similarListFragment = document.createDocumentFragment();
 
-createPictures.forEach(({url, description, comments, likes}) => {
+gallery.forEach(({url, description, comments, likes}) => {
   const picture = pictureTemplete.cloneNode(true);
   picture.querySelector('.picture__img').src = url;
   picture.querySelector('.picture__img').alt = description;
@@ -19,8 +18,4 @@ createPictures.forEach(({url, description, comments, likes}) => {
 
 pictures.append(similarListFragment);
 
-export {
-  createPictures,
-  similarListFragment
-};
-
+export {gallery};
