@@ -1,6 +1,7 @@
 import './variables.js';
 import {uploadForm} from './variables.js';
 
+
 const pristine = new Pristine (uploadForm, {
   classTo: 'img-upload__text',
   errorTextParent: 'img-upload__text',
@@ -24,3 +25,5 @@ uploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
   }
 });
+
+export {pristine};
