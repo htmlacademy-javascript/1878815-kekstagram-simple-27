@@ -13,7 +13,7 @@ const renderSuccessAlert = () => {
   const successButton = document.querySelector('.success__button');
   successButton.addEventListener('click', onCloseBtnClick);
 
-  successAlert.addEventListener('keydown', onPopupEscKeydownnn);
+  document.addEventListener('keydown', onPopupEscKeydowAlert);
 };
 
 const renderErrorAlert = () => {
@@ -24,26 +24,30 @@ const renderErrorAlert = () => {
   errorButton.addEventListener('click', onCloseBtnClick);
 
   document.removeEventListener('keydown', onPopupEscKeydown);
-  errorAlert.addEventListener('keydown', onPopupEscKeydownnn);
+  document.addEventListener('keydown', onPopupEscKeydowAlert);
 };
-
-function onPopupEscKeydownnn (evt) {
-  if (evt.key === 'Escape') {
-    evt.preventDefault();
-    onCloseBtnClick();
-  }
-}
 
 function onCloseBtnClick() {
   const successModal = document.querySelector('.success');
   const errorModal = document.querySelector('.error');
   if (successModal) {
     successModal.remove();
-    document.removeEventListener('keydown', onPopupEscKeydown);
   }
   if (errorModal) {
     errorModal.remove();
-    document.removeEventListener('keydown', onPopupEscKeydown);
+    document.addEventListener('keydown', onPopupEscKeydown);
+  }
+  document.removeEventListener('keydown', onPopupEscKeydowAlert);
+}
+
+function onPopupEscKeydowAlert (evt) {
+  const errorModal = document.querySelector('.error');
+  if (evt.key === 'Escape') {
+    evt.preventDefault();
+    onCloseBtnClick();
+    if (errorModal) {
+      document.addEventListener('keydown', onPopupEscKeydown);
+    }
   }
 }
 

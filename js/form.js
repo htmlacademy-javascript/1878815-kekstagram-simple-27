@@ -19,15 +19,13 @@ const setFormSubmit = (onSuccess) => {
 
     if(isValid) {
       sendData(
-        () => onSuccess(),
+        () => onSuccess(renderSuccessAlert()),
         () => renderErrorAlert(),
-        new FormData(evt.target),
+        new FormData(evt.target)
       );
     }
   });
 };
-
-setFormSubmit(() => renderSuccessAlert());
 
 setFormSubmit(closeModal);
 
