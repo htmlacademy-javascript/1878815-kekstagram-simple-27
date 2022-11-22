@@ -1,11 +1,11 @@
 const gallery = document.querySelector('.pictures');
-const pictureTemplete = document.querySelector('#picture').content.querySelector('.picture');
+const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
 const renderGallery = (pictures) => {
   const similarListFragment = document.createDocumentFragment();
 
   pictures.forEach(({url, description, comments, likes}) => {
-    const picture = pictureTemplete.cloneNode(true);
+    const picture = pictureTemplate.cloneNode(true);
     picture.querySelector('.picture__img').src = url;
     picture.querySelector('.picture__img').alt = description;
     picture.querySelector('.picture__comments').textContent = comments;

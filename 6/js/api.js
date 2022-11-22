@@ -1,11 +1,12 @@
 import './alerts.js';
 import './gallery.js';
 import {renderGallery} from './gallery.js';
-import {renderSuccessAlert} from './alerts.js';
-import {renderErrorAlert} from './alerts.js';
+
+const GET_DATA_LINK = 'https://27.javascript.pages.academy/kekstagram-simple/data';
+const SEND_DATA_LINK = 'https://27.javascript.pages.academy/kekstagram-simpl';
 
 const getData = () => {
-  fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
+  fetch(GET_DATA_LINK)
     .then((response) => response.json())
     .then((pictures) => {
       renderGallery(pictures);
@@ -15,7 +16,7 @@ getData();
 
 const sendData = (onSuccess, onFail, body) => {
   fetch(
-    'https://27.javascript.pages.academy/kekstagram-simple',
+    SEND_DATA_LINK,
     {
       method: 'POST',
       body,
@@ -23,13 +24,13 @@ const sendData = (onSuccess, onFail, body) => {
   )
     .then((response) => {
       if (response.ok) {
-        onSuccess(renderSuccessAlert);
+        onSuccess();
       } else {
-        onFail(renderErrorAlert);
+        onFail();
       }
     })
     .catch(() => {
-      onFail(renderErrorAlert);
+      onFail();
     });
 };
 
