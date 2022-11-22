@@ -3,7 +3,7 @@ import './gallery.js';
 import {renderGallery} from './gallery.js';
 
 const GET_DATA_LINK = 'https://27.javascript.pages.academy/kekstagram-simple/data';
-const SEND_DATA_LINK = 'https://27.javascript.pages.academy/kekstagram-simpl';
+const SEND_DATA_LINK = 'https://27.javascript.pages.academy/kekstagram-simple';
 
 const getData = () => {
   fetch(GET_DATA_LINK)
