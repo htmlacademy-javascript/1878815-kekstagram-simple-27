@@ -1,7 +1,7 @@
 import './variables.js';
-import {uploadForm} from './variables.js';
 import './modal.js';
 import {onPopupEscKeydown} from './modal.js';
+import {uploadForm} from './variables.js';
 
 const successAlertTemplate = document.querySelector('#success').content.querySelector('.success');
 const errorAlertTemplate = document.querySelector('#error').content.querySelector('.error');

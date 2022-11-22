@@ -18,13 +18,6 @@ const openModal = () => {
   document.addEventListener('keydown', onPopupEscKeydown);
 };
 
-function onPopupEscKeydown (evt) {
-  if (evt.key === 'Escape') {
-    evt.preventDefault();
-    closeModal();
-  }
-}
-
 const clearForm = () => {
   uploadForm.reset();
   pristine.reset();
@@ -32,12 +25,19 @@ const clearForm = () => {
   resetEffects();
 };
 
-function closeModal () {
+const closeModal = () => {
   formModal.classList.add('hidden');
   body.classList.remove('modal-open');
   clearForm();
 
   document.removeEventListener('keydown', onPopupEscKeydown);
+};
+
+function onPopupEscKeydown (evt) {
+  if (evt.key === 'Escape') {
+    evt.preventDefault();
+    closeModal();
+  }
 }
 
 closeElement.addEventListener('click', closeModal);

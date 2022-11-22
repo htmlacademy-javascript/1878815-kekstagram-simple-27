@@ -6,10 +6,12 @@ import './alerts.js';
 import './api.js';
 import {sendData} from './api.js';
 import {uploadForm} from './variables.js';
-import { pristine } from './validation.js';
+import {pristine} from './validation.js';
 import {closeModal} from './modal.js';
-import {renderSuccessAlert} from './alerts.js';
-import {renderErrorAlert} from './alerts.js';
+import {
+  renderSuccessAlert,
+  renderErrorAlert
+} from './alerts.js';
 
 const setFormSubmit = (onSuccess) => {
   uploadForm.addEventListener('submit', (evt) => {
