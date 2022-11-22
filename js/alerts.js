@@ -1,51 +1,50 @@
 import './variables.js';
 import {uploadForm} from './variables.js';
+import './modal.js';
+import {onPopupEscKeydown} from './modal.js';
 
-const successAlertTemplete = document.querySelector('#success').content.querySelector('.success');
-const errorAlertTemplete = document.querySelector('#error').content.querySelector('.error');
+const successAlertTemplate = document.querySelector('#success').content.querySelector('.success');
+const errorAlertTemplate = document.querySelector('#error').content.querySelector('.error');
 
 const renderSuccessAlert = () => {
-  const documentFragment = document.createDocumentFragment();
-  const successAlert = successAlertTemplete.cloneNode(true);
-  documentFragment.append(successAlert);
-  uploadForm.append(documentFragment);
+  const successAlert = successAlertTemplate.cloneNode(true);
+  uploadForm.append(successAlert);
 
   const successButton = document.querySelector('.success__button');
-  successButton.addEventListener('click', closeSuccessAlert);
+  successButton.addEventListener('click', onCloseBtnClick);
 
-  document.addEventListener('keydown', onPopupEscKeydown);
+  successAlert.addEventListener('keydown', onPopupEscKeydownnn);
 };
 
 const renderErrorAlert = () => {
-  const documentFragment = document.createDocumentFragment();
-  const errorAlert = errorAlertTemplete.cloneNode(true);
-  documentFragment.append(errorAlert);
-  uploadForm.append(documentFragment);
+  const errorAlert = errorAlertTemplate.cloneNode(true);
+  uploadForm.append(errorAlert);
 
   const errorButton = document.querySelector('.error__button');
-  errorButton.addEventListener('click', closeErrorAlert);
+  errorButton.addEventListener('click', onCloseBtnClick);
 
-  document.addEventListener('keydown', onPopupEscKeydown);
+  document.removeEventListener('keydown', onPopupEscKeydown);
+  errorAlert.addEventListener('keydown', onPopupEscKeydownnn);
 };
 
-function onPopupEscKeydown (evt) {
+function onPopupEscKeydownnn (evt) {
   if (evt.key === 'Escape') {
     evt.preventDefault();
-    closeSuccessAlert();
-    closeErrorAlert();
+    onCloseBtnClick();
   }
 }
 
-function closeSuccessAlert() {
+function onCloseBtnClick() {
   const successModal = document.querySelector('.success');
-  successModal.remove();
-  document.removeEventListener('keydown', onPopupEscKeydown);
-}
-
-function closeErrorAlert() {
   const errorModal = document.querySelector('.error');
-  errorModal.remove();
-  document.removeEventListener('keydown', onPopupEscKeydown);
+  if (successModal) {
+    successModal.remove();
+    document.removeEventListener('keydown', onPopupEscKeydown);
+  }
+  if (errorModal) {
+    errorModal.remove();
+    document.removeEventListener('keydown', onPopupEscKeydown);
+  }
 }
 
 export {

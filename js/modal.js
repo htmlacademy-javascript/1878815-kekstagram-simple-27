@@ -46,5 +46,6 @@ pictureField.addEventListener('change', openModal);
 export {
   closeModal,
   clearForm,
-  openModal
+  openModal,
+  onPopupEscKeydown
 };
