@@ -2,12 +2,12 @@ import './variables.js';
 import {picturePreview} from './variables.js';
 
 const pictureEffects = document.querySelector('.effects__list');
+const valueContainer = document.querySelector('.img-upload__effect-level');
 const sliderElement = document.querySelector('.effect-level__slider');
 const valueElement = document.querySelector('.effect-level__value');
 
-const EFFECTS_LIST = [
-  {
-    id: 'effect-none',
+const effects = {
+  none: {
     filter: 'none',
     step: 1,
     min: 0,
@@ -15,8 +15,7 @@ const EFFECTS_LIST = [
     unit: ''
   },
 
-  {
-    id: 'effect-chrome',
+  chrome: {
     filter: 'grayscale',
     step: 0.1,
     min: 0,
@@ -24,8 +23,7 @@ const EFFECTS_LIST = [
     unit: ''
   },
 
-  {
-    id: 'effect-heat',
+  heat: {
     filter: 'brightness',
     step: 0.1,
     min: 1,
@@ -33,8 +31,7 @@ const EFFECTS_LIST = [
     unit: ''
   },
 
-  {
-    id: 'effect-sepia',
+  sepia: {
     filter: 'sepia',
     step: 0.1,
     min: 0,
@@ -42,8 +39,7 @@ const EFFECTS_LIST = [
     unit: ''
   },
 
-  {
-    id: 'effect-marvin',
+  marvin: {
     filter: 'invert',
     step: 1,
     min: 0,
@@ -51,36 +47,36 @@ const EFFECTS_LIST = [
     unit: '%'
   },
 
-  {
-    id: 'effect-phobos',
+  phobos: {
     filter: 'blur',
     step: 0.1,
     min: 0,
     max: 3,
     unit: 'px'
   }
-];
+};
 
 let currentEffect;
-const DEFAULT_EFFECT = EFFECTS_LIST[0];
+const DEFAULT_EFFECT = effects.none;
 currentEffect = DEFAULT_EFFECT;
 
 const updateSlider = () => {
   if (currentEffect === DEFAULT_EFFECT) {
-    sliderElement.classList.add('hidden');
+    valueContainer.style.display = 'none';
   }
   if (currentEffect !== DEFAULT_EFFECT) {
     sliderElement.classList.remove('hidden');
-    sliderElement.noUiSlider.updateOptions({
-      range: {
-        min: currentEffect.min,
-        max: currentEffect.max,
-      },
-      start: currentEffect.max,
-      step: currentEffect.step,
-      connect: 'lower',
-    });
+    valueContainer.style.display = 'block';
   }
+  sliderElement.noUiSlider.updateOptions({
+    range: {
+      min: currentEffect.min,
+      max: currentEffect.max,
+    },
+    start: currentEffect.max,
+    step: currentEffect.step,
+    connect: 'lower',
+  });
 };
 
 noUiSlider.create(sliderElement, {
@@ -102,15 +98,12 @@ sliderElement.noUiSlider.on('update', () => {
   valueElement.value = sliderElement.noUiSlider.get();
 });
 
-const onEffectChange = (evt) => {
-  currentEffect = EFFECTS_LIST.find((effect) => effect.id === evt.target.id);
-  if (evt.target.id === 'effect-none') {
-    picturePreview.style.filter = 'none';
-  }
+const changeEffect = (evt) => {
+  currentEffect = effects[evt.target.value];
   updateSlider();
 };
 
-const onSliderUpdate = () => {
+const applyEffect = () => {
   picturePreview.style.filter = 'none';
   if (currentEffect === DEFAULT_EFFECT) {
     return;
@@ -121,11 +114,10 @@ const onSliderUpdate = () => {
 
 const resetEffects = () => {
   currentEffect = DEFAULT_EFFECT;
-  picturePreview.style.filter = 'none';
   updateSlider();
 };
 
-pictureEffects.addEventListener('change', onEffectChange);
-sliderElement.noUiSlider.on('update', onSliderUpdate);
+pictureEffects.addEventListener('change', changeEffect);
+sliderElement.noUiSlider.on('update', applyEffect);
 
 export {resetEffects};

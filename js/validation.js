@@ -1,8 +1,8 @@
 import './variables.js';
 import {uploadForm} from './variables.js';
 
-const MINLENGTH = 20;
-const MAXLENGTH = 140;
+const MIN_LENGTH = 20;
+const MAX_LENGTH = 140;
 
 const pristine = new Pristine (uploadForm, {
   classTo: 'img-upload__text',
@@ -10,7 +10,7 @@ const pristine = new Pristine (uploadForm, {
   errorTextClass: 'img-upload__text--error'
 });
 
-const validateComment = (string) => string.length >= MINLENGTH && string.length <= MAXLENGTH;
+const validateComment = (string) => string.length >= MIN_LENGTH && string.length <= MAX_LENGTH;
 
 pristine.addValidator(
   uploadForm.querySelector('.text__description'),
