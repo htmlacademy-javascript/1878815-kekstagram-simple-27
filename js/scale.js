@@ -4,8 +4,8 @@ import {
   scaleContol
 } from './variables.js';
 
-const scaleSmaller = document.querySelector('.scale__control--smaller');
-const scaleBigger = document.querySelector('.scale__control--bigger');
+const scaleSmallerBtn = document.querySelector('.scale__control--smaller');
+const scaleBiggerBtn = document.querySelector('.scale__control--bigger');
 
 const SCALE_STEP = 25;
 const CEIL_SCALE = 100;
@@ -14,7 +14,7 @@ const PERCENT = 100;
 
 let scaleValue = CEIL_SCALE;
 
-const onClickScaleBigger = () => {
+const scaleBigger = () => {
   if (scaleValue >= FLOOR_SCALE && scaleValue < CEIL_SCALE) {
     scaleValue += SCALE_STEP;
     scaleContol.value = `${scaleValue}%`;
@@ -22,7 +22,7 @@ const onClickScaleBigger = () => {
   }
 };
 
-const onClickScaleSmaller = () => {
+const scaleSmaller = () => {
   if (scaleValue > FLOOR_SCALE && scaleValue <= CEIL_SCALE) {
     scaleValue -= SCALE_STEP;
     scaleContol.value = `${scaleValue}%`;
@@ -30,8 +30,8 @@ const onClickScaleSmaller = () => {
   }
 };
 
-scaleSmaller.addEventListener('click', onClickScaleSmaller);
-scaleBigger.addEventListener('click', onClickScaleBigger);
+scaleSmallerBtn.addEventListener('click', scaleSmaller);
+scaleBiggerBtn.addEventListener('click', scaleBigger);
 
 const resetScale = () => {
   scaleContol.value = `${CEIL_SCALE}%`;

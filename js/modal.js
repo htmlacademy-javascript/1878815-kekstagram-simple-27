@@ -4,13 +4,13 @@ import './effects.js';
 import './validation.js';
 import {resetEffects} from './effects.js';
 import {resetScale} from './scale.js';
-import {uploadForm} from './variables.js';
 import {pristine} from './validation.js';
+import {uploadForm} from './variables.js';
 
 const body = document.querySelector('body');
 const formModal = body.querySelector('.img-upload__overlay');
-const pictureField = uploadForm.querySelector('#upload-file');
 const closeElement = uploadForm.querySelector('.img-upload__cancel');
+const pictureField = uploadForm.querySelector('#upload-file');
 
 const openModal = () => {
   body.classList.add('modal-open');
