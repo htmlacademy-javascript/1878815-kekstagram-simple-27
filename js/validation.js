@@ -1,15 +1,16 @@
 import './variables.js';
 import {uploadForm} from './variables.js';
 
+const MINLENGTH = 20;
+const MAXLENGTH = 140;
+
 const pristine = new Pristine (uploadForm, {
   classTo: 'img-upload__text',
   errorTextParent: 'img-upload__text',
   errorTextClass: 'img-upload__text--error'
 });
 
-function validateComment (value) {
-  return value.length >= 20 && value.length <= 140;
-}
+const validateComment = (string) => string.length >= MINLENGTH && string.length <= MAXLENGTH;
 
 pristine.addValidator(
   uploadForm.querySelector('.text__description'),
@@ -18,9 +19,10 @@ pristine.addValidator(
 );
 
 uploadForm.addEventListener('submit', (evt) => {
-
   const isValid = pristine.validate();
   if (!isValid) {
     evt.preventDefault();
   }
 });
+
+export {pristine};
